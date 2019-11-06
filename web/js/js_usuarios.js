@@ -18,9 +18,13 @@ function crearUsuario() {
           email       : email,
           contrasenia : contrasenia
         },
-        success: function( result ) {
-            console.log('result:', result);
-//          $('#resultado').html(result);
+        success: function( resultado ) {
+            $('#resultado').html(resultado);
+          
+            $('#txtNombres').val('');
+            $('#txtApellidos').val('');
+            $('#txtEmail').val('');
+            $('#txtContrasenia').val('');
         }
     });
 }

@@ -22,7 +22,7 @@
             
             <div class="form-group">
                 <label for="txtContrasenia">Contraseña</label>
-                <input type="text" class="form-control" id="txtContrasenia" name="txtContrasenia" required>
+                <input type="password" class="form-control" id="txtContrasenia" name="txtContrasenia" required>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block">Crear</button>

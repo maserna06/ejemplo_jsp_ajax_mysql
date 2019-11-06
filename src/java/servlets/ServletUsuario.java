@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ServletUsuario", urlPatterns = {"/ServletUsuario"})
 public class ServletUsuario extends HttpServlet {
 
-    
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -31,9 +29,24 @@ public class ServletUsuario extends HttpServlet {
             u.setEmail(email);
             u.setContrasenia(contrasenia);
             
-            int i = UsuarioDatos.crear(u);
+            int respuesta = UsuarioDatos.crear(u);
             
-            out.println(nombres + " ** " + apellidos + " ** " + email + " ** " + contrasenia + " ** " + i);
+            String resultado;
+            if(respuesta > 0) { 
+                resultado = ""+ 
+                "<div class=\"alert alert-dismissible alert-success\">\n" +
+                "  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" +
+                "   <strong>Confirmación!</strong> Usuario almacenado con Exito.\n" +
+                "</div>"; 
+            } else {
+                resultado = ""+
+                "<div class=\"alert alert-dismissible alert-danger\">\n" +
+                "  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" +
+                "   <strong>Error!</strong> Almacenando el usuario.\n" +
+                "</div>"; 
+            }
+            
+            out.println(resultado);
         }
     }
 
