@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <h1 class="text-center">Login</h1>
 
-        <form id="frmPersona">
+        <form id="frmLogin">
             <fieldset>
                 <div class="form-group">
                     <label for="txtEmail">Email</label>
@@ -23,3 +23,7 @@
     </div>
     <div class="col-md-3"></div>
 </div>
+
+<%@ include file="includes_js_generales.html" %>
+
+<script src="js/js_login.js"></script>
