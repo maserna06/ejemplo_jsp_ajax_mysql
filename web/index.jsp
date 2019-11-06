@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 16/10/2019, 09:49:56 AM
-    Author     : manuel
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
