@@ -29,6 +29,10 @@
                 </li>
                 
                 <li class="nav-item">
+                  <a class="nav-link" href="?op=usuarios">Usuarios</a>
+                </li>
+                
+                <li class="nav-item">
                   <a class="nav-link" href="?op=contacto">Contacto</a>
                 </li>
                 
@@ -71,6 +75,11 @@
                 } else if(op.equals("personas")) {
             %>
                     <%@ include file="personas.jsp" %>
+            <%
+                } else if(op.equals("usuarios")) {
+
+            %>
+                    <%@ include file="usuarios.jsp" %>
             <%
                 } else if(op.equals("contacto")) {
 
