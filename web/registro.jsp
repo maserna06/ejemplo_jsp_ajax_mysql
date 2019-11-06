@@ -3,15 +3,15 @@
     <div class="col-md-6">
         <h1 class="text-center">Registro</h1>
 
-        <form id="frmPersona">
+        <form id="frmRegistro">
             <fieldset>
                 <div class="form-group">
                     <label for="txtNombres">Nombres</label>
-                    <input type="email" class="form-control" id="txtNombres" name="txtNombres" placeholder="Ingrese sus nombres" required>
+                    <input type="text" class="form-control" id="txtNombres" name="txtNombres" placeholder="Ingrese sus nombres" required>
                 </div>
                 <div class="form-group">
                     <label for="txtApellidos">Apellidos</label>
-                    <input type="email" class="form-control" id="txtApellidos" name="txtApellidos" placeholder="Ingrese sus apellidos" required>
+                    <input type="text" class="form-control" id="txtApellidos" name="txtApellidos" placeholder="Ingrese sus apellidos" required>
                 </div>
                 <div class="form-group">
                     <label for="txtEmail">email</label>
@@ -35,3 +35,8 @@
     </div>
     <div class="col-md-3"></div>
 </div>
+
+<%@ include file="includes_js_generales.html" %>
+
+<!-- js para la seccion personas -->
+<script src="js/js_registro.js"></script>

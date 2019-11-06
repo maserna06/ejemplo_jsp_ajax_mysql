@@ -24,15 +24,15 @@
                   <a class="nav-link" href="?">Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 
-                <li class="nav-item">
+<!--                <li class="nav-item">
                   <a class="nav-link" href="?op=usuarios">Usuarios</a>
-                </li>
+                </li>-->
                 
                 <li class="nav-item">
                   <a class="nav-link" href="?op=contacto">Contacto</a>
                 </li>
                 
-                <li class="nav-item dropdown">
+<!--                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Dropdown<span class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="download">
                       <a class="dropdown-item" target="_blank" href="#">Sub Opción 1</a>
@@ -40,7 +40,7 @@
                       <a class="dropdown-item" href="#" download>Sub Opción 2</a>
                       <a class="dropdown-item" href="#" download>Sub Opción 3</a>
                     </div>
-                </li>
+                </li>-->
               </ul>
                 
               <form class="form-inline my-2 my-lg-0">
@@ -68,10 +68,10 @@
             %>
                     <%@ include file="inicio.jsp" %>
             <%
-                } else if(op.equals("usuarios")) {
+//                } else if(op.equals("usuarios")) {
 
             %>
-                    <%@ include file="usuarios.jsp" %>
+                    <%--<%@ include file="usuarios.jsp" %>--%>
             <%
                 } else if(op.equals("contacto")) {
 
@@ -94,10 +94,10 @@
             %>
         </div>
         
-        <%@ include file="includes_js_generales.html" %>
+        <%--<%@ include file="includes_js_generales.html" %>--%>
         
-        <script>
+<!--        <script>
             $('.dropdown-toggle').dropdown()
-        </script>
+        </script>-->
     </body>
 </html>
