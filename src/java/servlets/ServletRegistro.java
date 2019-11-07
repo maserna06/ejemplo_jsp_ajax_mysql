@@ -31,22 +31,7 @@ public class ServletRegistro extends HttpServlet {
             
             int respuesta = UsuarioDatos.crear(u);
             
-            String resultado;
-            if(respuesta > 0) { 
-                resultado = ""+ 
-                "<div class=\"alert alert-dismissible alert-success\">\n" +
-                "  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" +
-                "   <strong>Confirmación!</strong> Usuario almacenado con Exito.\n" +
-                "</div>"; 
-            } else {
-                resultado = ""+
-                "<div class=\"alert alert-dismissible alert-danger\">\n" +
-                "  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" +
-                "   <strong>Error!</strong> Almacenando el usuario.\n" +
-                "</div>"; 
-            }
-            
-            out.println(resultado);
+            out.println(respuesta);
             
         }
     }

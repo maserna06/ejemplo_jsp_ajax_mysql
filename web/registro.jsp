@@ -2,7 +2,9 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
         <h1 class="text-center">Registro</h1>
-
+        
+        <div id="resultado-msg"></div>
+        
         <form id="frmRegistro">
             <fieldset>
                 <div class="form-group">
@@ -25,13 +27,12 @@
                     <label for="txtConfirmarContrasenia">Confirmar Contrseña</label>
                     <input type="password" class="form-control" id="txtConfirmarContrasenia" name="txtConfirmarContrasenia" placeholder="Ingrese la contraseña" required>
                 </div>
-                <button type="submit" class="btn btn-outline-success btn-block">Registrar</button>
+                <button type="submit" class="btn btn-outline-success btn-block">
+                    <span id="cargador-registrar-usuario" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+                    Registrar
+                </button>
             </fieldset>
         </form>
-
-        <br><br>
-
-        <div id="resultado"></div>
     </div>
     <div class="col-md-3"></div>
 </div>

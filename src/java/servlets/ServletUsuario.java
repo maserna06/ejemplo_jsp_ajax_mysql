@@ -36,13 +36,13 @@ public class ServletUsuario extends HttpServlet {
                 resultado = ""+ 
                 "<div class=\"alert alert-dismissible alert-success\">\n" +
                 "  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" +
-                "   <strong>Confirmación!</strong> Usuario almacenado con Exito.\n" +
+                "   <strong>Confirmación!</strong> Usuario creado con Exito.\n" +
                 "</div>"; 
             } else {
                 resultado = ""+
                 "<div class=\"alert alert-dismissible alert-danger\">\n" +
                 "  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" +
-                "   <strong>Error!</strong> Almacenando el usuario.\n" +
+                "   <strong>Error!</strong> Creando el usuario.\n" +
                 "</div>"; 
             }
             
