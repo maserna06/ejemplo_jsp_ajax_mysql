@@ -33,7 +33,6 @@ public class ServletLogin extends HttpServlet {
                 Usuario usuarioLogueado = UsuarioDatos.login(email, contrasenia);
 
                 if(usuarioLogueado != null) {
-//                    session.setAttribute("nombresUsuarioLogueado", usuarioLogueado.getNombres());
                     session.setAttribute("usuarioLogueado", usuarioLogueado);
                     out.print(1);
                 } else {
