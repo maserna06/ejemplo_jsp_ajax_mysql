@@ -100,11 +100,11 @@
             %>
                     <%@ include file="contacto.jsp" %>
             <%
-                } else if(op.equals("login")) {
+                } else if(op.equals("login") && usuarioLogueado == null) {
             %>
                 <%@ include file="login.jsp" %>
             <%
-                } else if(op.equals("registro")) {
+                } else if(op.equals("registro") && usuarioLogueado == null) {
             %>
                 <%@ include file="registro.jsp" %>
             <%
