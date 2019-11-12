@@ -3,6 +3,8 @@
     <div class="col-md-6">
         <h1 class="text-center">Login</h1>
 
+        <div id="resultado"></div>
+        
         <form id="frmLogin">
             <fieldset>
                 <div class="form-group">
@@ -16,10 +18,6 @@
                 <button type="submit" class="btn btn-outline-success btn-block">Ingresar</button>
             </fieldset>
         </form>
-
-        <br><br>
-
-        <div id="resultado"></div>
     </div>
     <div class="col-md-3"></div>
 </div>

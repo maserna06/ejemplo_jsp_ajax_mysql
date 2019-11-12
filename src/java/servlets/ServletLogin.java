@@ -1,6 +1,8 @@
 package servlets;
 
 import clases.Conexion;
+import clases.Usuario;
+import clases.UsuarioDatos;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ServletLogin", urlPatterns = {"/ServletLogin"})
 public class ServletLogin extends HttpServlet {
@@ -19,7 +22,28 @@ public class ServletLogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         try (PrintWriter out = response.getWriter()) {
-            out.println("Conexión: " + datos.conectar());
+            HttpSession session = request.getSession();
+            
+            String accion = request.getParameter("accion");
+            
+            if(accion.equals("login")) {
+                String email = request.getParameter("email");
+                String contrasenia = request.getParameter("contrasenia");
+
+                Usuario usuarioLogueado = UsuarioDatos.login(email, contrasenia);
+
+                if(usuarioLogueado != null) {
+//                    session.setAttribute("nombresUsuarioLogueado", usuarioLogueado.getNombres());
+                    session.setAttribute("usuarioLogueado", usuarioLogueado);
+                    out.print(1);
+                } else {
+                    session.setAttribute("usuarioLogueado", null);
+                    out.print(0);
+                }   
+            } else {
+                session.invalidate();
+                out.print(1);
+            }
         }
     }
 

@@ -1,3 +1,14 @@
+<%
+    Usuario usuarioLogueado = null;
+    
+    if(session.getAttribute("usuarioLogueado") != null) {
+        usuarioLogueado = (Usuario)session.getAttribute("usuarioLogueado");
+%>
+        <%@page import="clases.Usuario"%>
+<%
+    }
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,34 +34,46 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="?">Inicio <span class="sr-only">(current)</span></a>
                 </li>
-                
-<!--                <li class="nav-item">
-                  <a class="nav-link" href="?op=usuarios">Usuarios</a>
-                </li>-->
+                <%
+                    if(usuarioLogueado != null) {
+                %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="?op=usuarios">Usuarios</a>
+                        </li>
+                <%
+                    }
+                %>
                 
                 <li class="nav-item">
                   <a class="nav-link" href="?op=contacto">Contacto</a>
                 </li>
-                
-<!--                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="download">Dropdown<span class="caret"></span></a>
-                    <div class="dropdown-menu" aria-labelledby="download">
-                      <a class="dropdown-item" target="_blank" href="#">Sub Opción 1</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#" download>Sub Opción 2</a>
-                      <a class="dropdown-item" href="#" download>Sub Opción 3</a>
-                    </div>
-                </li>-->
               </ul>
                 
               <form class="form-inline my-2 my-lg-0">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                      <a class="nav-link" href="?op=login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="?op=registro">Registro</a>
-                    </li>
+                    <%
+                        if(usuarioLogueado != null) {
+                    %>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="perfil"><% out.print(usuarioLogueado.getNombres()); %><span class="caret"></span></a>
+                                <div class="dropdown-menu" aria-labelledby="perfil">
+                                  <a class="dropdown-item" href="#">Perfil</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a id="logout" class="dropdown-item" href="#">Cerrar Sesión</a>
+                                </div>
+                            </li>
+                    <%
+                        } else {
+                    %>
+                            <li class="nav-item">
+                              <a class="nav-link" href="?op=login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="?op=registro">Registro</a>
+                            </li>
+                            <%
+                        }
+                    %>
                 </ul>
               </form>
             </div>
@@ -68,10 +91,9 @@
             %>
                     <%@ include file="inicio.jsp" %>
             <%
-//                } else if(op.equals("usuarios")) {
-
+                } else if(op.equals("usuarios") && usuarioLogueado != null) {
             %>
-                    <%--<%@ include file="usuarios.jsp" %>--%>
+                    <%@ include file="usuarios.jsp" %>
             <%
                 } else if(op.equals("contacto")) {
 
@@ -94,10 +116,20 @@
             %>
         </div>
         
-        <%--<%@ include file="includes_js_generales.html" %>--%>
+        <%@ include file="includes_js_generales.html" %>
         
-<!--        <script>
-            $('.dropdown-toggle').dropdown()
-        </script>-->
+        <%
+            if(usuarioLogueado != null) {
+        %>
+        
+            <script src="js/js_login.js"></script>
+
+            <script>
+                $('.dropdown-toggle').dropdown();
+            </script>
+        
+        <%
+            }
+        %>
     </body>
 </html>

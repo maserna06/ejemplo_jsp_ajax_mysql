@@ -1,6 +1,7 @@
 package clases;
 
 public class Usuario {
+    private int id;
     private String nombres;
     private String apellidos;
     private String email;
@@ -9,6 +10,14 @@ public class Usuario {
     public Usuario() {
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNombres() {
         return nombres;
     }

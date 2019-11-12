@@ -27,4 +27,31 @@ public class UsuarioDatos {
         }
         return estado;
     }
+    
+    public static Usuario login(String email, String contrasenia) {
+        Usuario u = null;
+        
+        try {
+            Connection conn = conectar();
+            
+            PreparedStatement ps = conn.prepareStatement(
+            "SELECT * FROM usuarios WHERE email=? AND contrasenia=?");
+            
+            ps.setString(1, email);
+            ps.setString(2, contrasenia);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                u = new Usuario();
+                u.setId(rs.getInt("id"));
+                u.setNombres(rs.getString("nombres"));
+                u.setApellidos(rs.getString("apellidos"));
+                u.setEmail(rs.getString("email"));
+            }
+        } catch(Exception e) {
+            System.out.println("ERROR AL EJECUTAR LA CONSULTA: " + e);
+        }
+        return u;
+    }
 }
