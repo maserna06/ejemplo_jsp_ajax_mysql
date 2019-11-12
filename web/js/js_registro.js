@@ -15,7 +15,7 @@ function registroUsuario() {
     let confirmarContrasenia = $('#txtConfirmarContrasenia').val();
     
     if(contrasenia !== confirmarContrasenia) {
-        $('#resultado-msg').html(
+        $('#resultado').html(
             "<div class=\"alert alert-dismissible alert-danger\">\n" +
             "  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" +
             "   <strong>Error!</strong> Las contraseñas no coinciden.\n" +
@@ -50,7 +50,7 @@ function registroUsuario() {
                     "</div>"; 
                 }
                 
-                $('#resultado-msg').html(msj);
+                $('#resultado').html(msj);
                 
                 $('#cargador-registrar-usuario').hide();
 

@@ -3,7 +3,7 @@
     <div class="col-md-6">
         <h1 class="text-center">Registro</h1>
         
-        <div id="resultado-msg"></div>
+        <div id="resultado"></div>
         
         <form id="frmRegistro">
             <fieldset>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label for="txtConfirmarContrasenia">Confirmar Contrseña</label>
-                    <input type="password" class="form-control" id="txtConfirmarContrasenia" name="txtConfirmarContrasenia" placeholder="Ingrese la contraseña" required>
+                    <input type="password" class="form-control" id="txtConfirmarContrasenia" name="txtConfirmarContrasenia" placeholder="Confirme la contraseña" required>
                 </div>
                 <button type="submit" class="btn btn-outline-success btn-block">
                     <span id="cargador-registrar-usuario" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>

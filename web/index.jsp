@@ -31,7 +31,7 @@
 
             <div class="collapse navbar-collapse" id="navbarColor01">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                   <a class="nav-link" href="?">Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 <%
@@ -57,8 +57,8 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="perfil"><% out.print(usuarioLogueado.getNombres()); %><span class="caret"></span></a>
                                 <div class="dropdown-menu" aria-labelledby="perfil">
-                                  <a class="dropdown-item" href="#">Perfil</a>
-                                  <div class="dropdown-divider"></div>
+<!--                                  <a class="dropdown-item" href="#">Perfil</a>
+                                  <div class="dropdown-divider"></div>-->
                                   <a id="logout" class="dropdown-item" href="#">Cerrar Sesión</a>
                                 </div>
                             </li>

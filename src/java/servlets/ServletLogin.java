@@ -15,8 +15,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ServletLogin", urlPatterns = {"/ServletLogin"})
 public class ServletLogin extends HttpServlet {
 
-    Conexion datos = new Conexion();
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -38,7 +36,7 @@ public class ServletLogin extends HttpServlet {
                 } else {
                     session.setAttribute("usuarioLogueado", null);
                     out.print(0);
-                }   
+                }
             } else {
                 session.invalidate();
                 out.print(1);

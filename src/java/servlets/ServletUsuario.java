@@ -4,6 +4,7 @@ import clases.Usuario;
 import clases.UsuarioDatos;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,41 +13,80 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "ServletUsuario", urlPatterns = {"/ServletUsuario"})
 public class ServletUsuario extends HttpServlet {
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            String nombres     = request.getParameter("nombres");
-            String apellidos   = request.getParameter("apellidos");
-            String email       = request.getParameter("email");
-            String contrasenia = request.getParameter("contrasenia");
+            String accion = request.getParameter("accion");
             
-            Usuario u = new Usuario();
-            u.setNombres(nombres);
-            u.setApellidos(apellidos);
-            u.setEmail(email);
-            u.setContrasenia(contrasenia);
-            
-            int respuesta = UsuarioDatos.crear(u);
-            
-            String resultado;
-            if(respuesta > 0) { 
-                resultado = ""+ 
-                "<div class=\"alert alert-dismissible alert-success\">\n" +
-                "  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" +
-                "   <strong>Confirmación!</strong> Usuario creado con Exito.\n" +
-                "</div>"; 
-            } else {
-                resultado = ""+
-                "<div class=\"alert alert-dismissible alert-danger\">\n" +
-                "  <button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n" +
-                "   <strong>Error!</strong> Creando el usuario.\n" +
-                "</div>"; 
+            if(accion.equals("crear")) {
+                String nombres     = request.getParameter("nombres");
+                String apellidos   = request.getParameter("apellidos");
+                String email       = request.getParameter("email");
+                String contrasenia = request.getParameter("contrasenia");
+
+                Usuario u = new Usuario();
+                u.setNombres(nombres);
+                u.setApellidos(apellidos);
+                u.setEmail(email);
+                u.setContrasenia(contrasenia);
+
+                int respuesta = UsuarioDatos.crear(u);
+                out.println(respuesta);
             }
             
-            out.println(resultado);
+            if(accion.equals("listar")) {
+                List<Usuario> usuarios = UsuarioDatos.listarUsuarios();
+
+                String tabla = "" +
+                "<table class=\"table table-hover\">\n" +
+                "  <thead>\n" +
+                "    <tr>\n" +
+                "      <th scope=\"col\">Nombres</th>\n" +
+                "      <th scope=\"col\">Apellidos</th>\n" +
+                "      <th scope=\"col\">Email</th>\n" +
+                "      <th scope=\"col\"></th>\n" +
+                "      <th scope=\"col\"></th>\n" +
+                "    </tr>\n" +
+                "  </thead>\n" +
+                "  <tbody>";
+                
+                for(int i = 0; i < usuarios.size(); i++) {
+                    tabla += "" +
+                    "    <tr class=\"table-active\">\n" +
+                    "      <td>"+usuarios.get(i).getNombres()+"</td>\n" +
+                    "      <td>"+usuarios.get(i).getApellidos()+"</td>\n" +
+                    "      <td>"+usuarios.get(i).getEmail()+"</td>\n" +
+                    "      <td><a href='#' class=\"btn btn-info btn-sm\" onclick='editarUsuario("+usuarios.get(i).getId()+")'>Editar</a></td>\n" +
+                    "      <td><a href='#' class=\"btn btn-danger btn-sm\" onclick='eliminarUsuario("+usuarios.get(i).getId()+")'>Eliminar</a></td>\n" +
+                    "    </tr>";
+                }
+                        
+                tabla += "" +
+                "  </tbody>\n" +
+                "</table>\n";
+                
+                out.println(tabla);
+            }
+            
+            if(accion.equals("editar")) {
+                String id = request.getParameter("id");
+                Usuario u = UsuarioDatos.getUsuarioPorId(Integer.parseInt(id));
+                String json = "{ \"title\": \"testTitle\", \"link\" : \"testLink\"}";
+//                String json = "{ " + 
+//                    "\"id\"          : \""+Integer.toString(u.getId())+"\", " +
+//                    "\"nombres\"     : \""+u.getNombres()+"\"" +
+//                    "\"apellidos\"   : \""+u.getApellidos()+"\"" +
+//                    "\"email\"       : \""+u.getEmail()+"\"" +
+//                    "\"contrasenia\" : \""+u.getContrasenia()+"\"" +
+//                "}";
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                out.print(json);
+                out.flush();
+            }
         }
     }
 
