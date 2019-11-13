@@ -1,6 +1,5 @@
 package servlets;
 
-import clases.Conexion;
 import clases.Usuario;
 import clases.UsuarioDatos;
 import java.io.IOException;
