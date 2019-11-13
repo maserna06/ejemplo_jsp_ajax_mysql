@@ -35,10 +35,15 @@
                     <label for="txtConfirmarContrasenia">Confirmar Contrseña</label>
                     <input type="password" class="form-control" id="txtConfirmarContrasenia" name="txtConfirmarContrasenia" placeholder="Confirme la contraseña" required>
                 </div>
-                <button type="submit" class="btn btn-outline-success btn-block">
-                    <span id="cargador-crear-usuario" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
-                    Crear
-                </button>
+                <div class="form-group text-right">
+                    <button type="submit" id="btn-crear-usuario" class="btn btn-outline-success">
+                        <span id="cargador-crear-usuario" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
+                        Crear
+                    </button>
+                    <button type="reset" id="btn-cancelar" class="btn btn-secondary">
+                        Cancelar
+                    </button>
+                </div>
             </fieldset>
         </form>
     </div>

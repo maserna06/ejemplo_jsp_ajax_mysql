@@ -30,6 +30,43 @@ public class UsuarioDatos {
         return estado;
     }
     
+    public static int actualizar(Usuario u) {
+        int estado = 0;
+        
+        try {
+            Connection conn = conectar();
+            PreparedStatement ps = conn.prepareStatement(
+            "UPDATE usuarios SET nombres=?, apellidos=?, email=?, contrasenia=? WHERE id=?"
+            );
+            ps.setString(1, u.getNombres());
+            ps.setString(2, u.getApellidos());
+            ps.setString(3, u.getEmail());
+            ps.setString(4, u.getContrasenia());
+            ps.setInt(5, u.getId());
+            
+            estado = ps.executeUpdate();
+        } catch(Exception e) {
+            System.out.println("ERROR AL EJECUTAR LA CONSULTA: " + e);
+        }
+        return estado;
+    }
+    
+    public static int eliminar(Usuario u) {
+        int estado = 0;
+        
+        try {
+            Connection conn = conectar();
+            PreparedStatement ps = conn.prepareStatement(
+            "DELETE FROM usuarios WHERE id=?"
+            );
+            ps.setInt(1, u.getId());
+            estado = ps.executeUpdate();
+        } catch(Exception e) {
+            System.out.println("ERROR AL EJECUTAR LA CONSULTA: " + e);
+        }
+        return estado;
+    }
+    
     public static Usuario login(String email, String contrasenia) {
         Usuario u = null;
         

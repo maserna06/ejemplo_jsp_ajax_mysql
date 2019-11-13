@@ -44,6 +44,7 @@ public class ServletUsuario extends HttpServlet {
                 "<table class=\"table table-hover\">\n" +
                 "  <thead>\n" +
                 "    <tr>\n" +
+                "      <th scope=\"col\">Id</th>\n" +
                 "      <th scope=\"col\">Nombres</th>\n" +
                 "      <th scope=\"col\">Apellidos</th>\n" +
                 "      <th scope=\"col\">Email</th>\n" +
@@ -56,10 +57,11 @@ public class ServletUsuario extends HttpServlet {
                 for(int i = 0; i < usuarios.size(); i++) {
                     tabla += "" +
                     "    <tr class=\"table-active\">\n" +
+                    "      <td>"+usuarios.get(i).getId()+"</td>\n" +
                     "      <td>"+usuarios.get(i).getNombres()+"</td>\n" +
                     "      <td>"+usuarios.get(i).getApellidos()+"</td>\n" +
                     "      <td>"+usuarios.get(i).getEmail()+"</td>\n" +
-                    "      <td><a href='#' class=\"btn btn-info btn-sm\" onclick='editarUsuario("+usuarios.get(i).getId()+")'>Editar</a></td>\n" +
+                    "      <td><a href='#' class=\"btn btn-info btn-sm\" onclick='datosUsuarioEditar("+usuarios.get(i).getId()+")'>Editar</a></td>\n" +
                     "      <td><a href='#' class=\"btn btn-danger btn-sm\" onclick='eliminarUsuario("+usuarios.get(i).getId()+")'>Eliminar</a></td>\n" +
                     "    </tr>";
                 }
@@ -71,21 +73,50 @@ public class ServletUsuario extends HttpServlet {
                 out.println(tabla);
             }
             
-            if(accion.equals("editar")) {
+            if(accion.equals("datosUsuarioEditar")) {
                 String id = request.getParameter("id");
                 Usuario u = UsuarioDatos.getUsuarioPorId(Integer.parseInt(id));
-                String json = "{ \"title\": \"testTitle\", \"link\" : \"testLink\"}";
-//                String json = "{ " + 
-//                    "\"id\"          : \""+Integer.toString(u.getId())+"\", " +
-//                    "\"nombres\"     : \""+u.getNombres()+"\"" +
-//                    "\"apellidos\"   : \""+u.getApellidos()+"\"" +
-//                    "\"email\"       : \""+u.getEmail()+"\"" +
-//                    "\"contrasenia\" : \""+u.getContrasenia()+"\"" +
-//                "}";
+                String json = "{ " +
+                    "\"id\"          : \""+Integer.toString(u.getId())+"\"," +
+                    "\"nombres\"     : \""+u.getNombres()+"\"," +
+                    "\"apellidos\"   : \""+u.getApellidos()+"\"," +
+                    "\"email\"       : \""+u.getEmail()+"\"," +
+                    "\"contrasenia\" : \""+u.getContrasenia()+"\"" +
+                "}";
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
                 out.print(json);
                 out.flush();
+            }
+            
+            if(accion.equals("actualizar")) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                String nombres = request.getParameter("nombres");
+                String apellidos = request.getParameter("apellidos");
+                String email = request.getParameter("email");
+                String contrasenia = request.getParameter("contrasenia");
+                
+                Usuario u = new Usuario();
+                u.setId(id);
+                u.setNombres(nombres);
+                u.setApellidos(apellidos);
+                u.setEmail(email);
+                u.setContrasenia(contrasenia);
+                
+                int respuesta = UsuarioDatos.actualizar(u);
+                
+                out.print(respuesta);
+            }
+            
+            if(accion.equals("eliminarUsuario")) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                
+                Usuario u = new Usuario();
+                u.setId(id);
+                
+                int respuesta = UsuarioDatos.eliminar(u);
+                
+                out.print(respuesta);
             }
         }
     }

@@ -43,10 +43,6 @@
                 <%
                     }
                 %>
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="?op=contacto">Contacto</a>
-                </li>
               </ul>
                 
               <form class="form-inline my-2 my-lg-0">
@@ -57,8 +53,6 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="perfil"><% out.print(usuarioLogueado.getNombres()); %><span class="caret"></span></a>
                                 <div class="dropdown-menu" aria-labelledby="perfil">
-<!--                                  <a class="dropdown-item" href="#">Perfil</a>
-                                  <div class="dropdown-divider"></div>-->
                                   <a id="logout" class="dropdown-item" href="#">Cerrar Sesión</a>
                                 </div>
                             </li>
@@ -94,11 +88,6 @@
                 } else if(op.equals("usuarios") && usuarioLogueado != null) {
             %>
                     <%@ include file="usuarios.jsp" %>
-            <%
-                } else if(op.equals("contacto")) {
-
-            %>
-                    <%@ include file="contacto.jsp" %>
             <%
                 } else if(op.equals("login") && usuarioLogueado == null) {
             %>
