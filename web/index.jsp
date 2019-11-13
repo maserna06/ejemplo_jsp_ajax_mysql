@@ -51,7 +51,9 @@
                         if(usuarioLogueado != null) {
                     %>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="perfil"><% out.print(usuarioLogueado.getNombres()); %><span class="caret"></span></a>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="perfil">
+                                    <% out.print(usuarioLogueado.getNombres()); %>
+                                    <span class="caret"></span></a>
                                 <div class="dropdown-menu" aria-labelledby="perfil">
                                   <a id="logout" class="dropdown-item" href="#">Cerrar Sesión</a>
                                 </div>
