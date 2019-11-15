@@ -22,3 +22,11 @@ Ejemplo de aplicación web con: HTML, CSS, Ajax de jQuery, Java y JSP (Java Serv
   * https://bootswatch.com/
 
   * https://getbootstrap.com/
+
+## 4. Solucionar problemas con MySQL
+
+mysql-connector-java-5.1.48.jar
+
+https://dev.mysql.com/downloads/connector/j/
+
+Descargar este driver y ponerlo en archivos de programa y adicionarlo en Libraries en Netbeans, click derecho add library y buscan en archivos de programa lo seleccionan y le dan aceptar
